@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Product</title>
+  </head>
+  <body>
+    <h1>Create Product</h1>
+    <h2>Detail Product</h2>
+    <h3>Welcome to HTML Ajeng Nursyifa</h3>
+
+    <form>
+      <label for="productName">Product name:</label>
+      <input type="text" id="productName" name="productName" /><br /><br />
+
+      <label for="productCategory">Product Category:</label>
+      <select id="productCategory" name="productCategory"></select
+      ><br /><br />
+
+      <label>Product Freshness:</label><br />
+      <input type="radio" name="productFreshness" value="brandNew" /> Brand
+      New<br />
+      <input type="radio" name="productFreshness" value="secondHand" /> Second
+      Hand<br />
+      <input type="radio" name="productFreshness" value="refurbished" />
+      Refurbished<br /><br />
+
+      <label for="productImage">Image of Product:</label>
+      <input type="file" id="productImage" name="productImage" /><br /><br />
+
+      <label for="productDescription">Additional Description:</label><br />
+      <textarea
+        id="productDescription"
+        name="productDescription"
+        rows="4"
+        cols="50"
+      ></textarea
+      ><br /><br />
+
+      <label for="productPrice">Product Price:</label>
+      <input
+        type="number"
+        id="productPrice"
+        name="productPrice"
+        value="100"
+      /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
