@@ -1,10 +1,22 @@
 # React_Ajeng-Nursyifa
 
-Pengumpulan Tugas Alterra REACTJS FRONT END
+# Struktur Data di JavaScript
 
-3 poin penting
+Dalam pemrograman, struktur data adalah cara kita mengatur dan menyimpan data agar dapat diakses serta dimanipulasi dengan efisien. JavaScript menyediakan beberapa jenis struktur data yang umum digunakan, yaitu:
 
-1. Front-end adalah bagian dari sebuah aplikasi atau website yang langsung berinteraksi dengan pengguna.
-2. Front-end sebagai penghubung antara ui ux dan back end
-3. Front end biasanya bertugas untuk membuat tampilan web atau antarmuka yang nyaman dan interaktif
-4. Front-end sering mengguakan html,css dan java script
+## Array
+
+Merupakan kumpulan nilai yang diurutkan dan diindeks. Setiap elemen dalam array dapat berupa tipe data apa pun, seperti angka, string, objek, atau bahkan array lainnya. Array sangat fleksibel dan sering digunakan untuk menyimpan daftar item, tabel data, atau hasil dari suatu operasi.
+
+## Object
+
+Sebuah struktur yang terdiri dari pasangan key-value yang tidak berurutan. Key biasanya berupa string, sementara value dapat berupa tipe data apa pun. Objek sering digunakan untuk merepresentasikan data yang lebih kompleks, seperti data pengguna, produk, atau konfigurasi aplikasi.
+
+## Map
+
+Struktur data yang mirip dengan objek, namun lebih fleksibel karena key pada Map dapat berupa tipe data apa pun, tidak hanya string. Map juga menyediakan metode bawaan seperti get, set, has, dan delete yang memudahkan manipulasi data.
+
+## Set
+
+Kumpulan nilai unik yang tidak berurutan. Set berguna untuk memastikan tidak ada data yang duplikat dalam suatu kumpulan, sering digunakan untuk operasi seperti penyaringan elemen duplikat dari array.
+"""

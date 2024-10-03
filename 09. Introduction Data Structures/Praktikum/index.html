@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <h2 class="text-2xl font-bold mb-6 text-center">List Product</h2>
+
+    <form
+      id="productForm"
+      class="mb-6 bg-white p-6 rounded shadow-md max-w-lg mx-auto"
+    >
+      <div class="mb-4">
+        <label for="productName" class="block text-gray-700"
+          >Product Name:</label
+        >
+        <input
+          type="text"
+          id="productName"
+          placeholder="Enter Product Name"
+          required
+          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="productCategory" class="block text-gray-700"
+          >Product Category:</label
+        >
+        <input
+          type="text"
+          id="productCategory"
+          placeholder="Enter Product Category"
+          required
+          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="productFreshness" class="block text-gray-700"
+          >Product Freshness:</label
+        >
+        <input
+          type="text"
+          id="productFreshness"
+          placeholder="Enter Product Freshness"
+          required
+          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="additionalDescription" class="block text-gray-700"
+          >Additional Description:</label
+        >
+        <input
+          type="text"
+          id="additionalDescription"
+          placeholder="Enter Additional Description"
+          required
+          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="productPrice" class="block text-gray-700"
+          >Product Price:</label
+        >
+        <input
+          type="number"
+          id="productPrice"
+          placeholder="Enter Product Price"
+          required
+          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <button
+        type="button"
+        onclick="addProduct()"
+        class="w-full bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600"
+      >
+        Add Product
+      </button>
+    </form>
+
+    <div class="max-w-lg mx-auto flex mb-6 space-x-2">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by Product Name"
+        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+      <button
+        onclick="searchProduct()"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Search
+      </button>
+      <button
+        onclick="deleteProduct()"
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+      >
+        Deletion
+      </button>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table
+        id="productTable"
+        class="min-w-full bg-white rounded shadow-md max-w-5xl mx-auto"
+      >
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="text-left px-4 py-2">No</th>
+            <th class="text-left px-4 py-2">Product Name</th>
+            <th class="text-left px-4 py-2">Product Category</th>
+            <th class="text-left px-4 py-2">Image of Product</th>
+            <th class="text-left px-4 py-2">Product Freshness</th>
+            <th class="text-left px-4 py-2">Additional Description</th>
+            <th class="text-left px-4 py-2">Product Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
