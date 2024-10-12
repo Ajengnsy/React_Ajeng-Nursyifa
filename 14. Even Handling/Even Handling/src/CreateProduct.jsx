@@ -19,7 +19,7 @@ const CreateProduct = () => {
     } else if (value.length > 10) {
       setProductNameError("Product Name should not exceed 10 characters.");
     } else {
-      setProductNameError(""); // Clear error if validation passes
+      setProductNameError("");
     }
 
     setProductName(value);
@@ -43,7 +43,6 @@ const CreateProduct = () => {
       productPrice,
     });
 
-    // Reset form fields after submit
     setProductName("");
     setProductCategory("");
     setImage(null);
@@ -196,7 +195,7 @@ const CreateProduct = () => {
 
         <button
           type="button"
-          onClick={handleRandomNumber} // Pastikan nama fungsi tidak typo
+          onClick={handleRandomNumber}
           className="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
         >
           Generate Random Number
