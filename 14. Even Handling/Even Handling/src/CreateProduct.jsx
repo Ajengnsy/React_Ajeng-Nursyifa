@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./index.css";
 
 const CreateProduct = () => {
   const [productName, setProductName] = useState("");
@@ -7,9 +8,32 @@ const CreateProduct = () => {
   const [freshness, setFreshness] = useState("");
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productNameError, setProductNameError] = useState("");
+
+  const handleProductNameChange = (e) => {
+    const value = e.target.value;
+
+    //  panjang karakter
+    if (value.length > 25) {
+      setProductNameError("Product Name must not exceed 25 characters.");
+    } else if (value.length > 10) {
+      setProductNameError("Product Name should not exceed 10 characters.");
+    } else {
+      setProductNameError(""); // Clear error if validation passes
+    }
+
+    setProductName(value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validasi saat submit
+    if (productName === "") {
+      alert("Please enter a valid product name.");
+      return;
+    }
+
     console.log({
       productName,
       productCategory,
@@ -18,12 +42,19 @@ const CreateProduct = () => {
       additionalDescription,
       productPrice,
     });
+
+    // Reset form fields after submit
     setProductName("");
     setProductCategory("");
     setImage(null);
     setFreshness("");
     setAdditionalDescription("");
     setProductPrice("");
+  };
+
+  const handleRandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * 100); // angka random 0-99
+    console.log("Random Number:", randomNumber);
   };
 
   return (
@@ -39,10 +70,15 @@ const CreateProduct = () => {
             className="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
             id="productName"
             value={productName}
-            onChange={(e) => setProductName(e.target.value)}
+            onChange={handleProductNameChange}
             required
           />
+          {/* Display error message if there's any */}
+          {productNameError && (
+            <p className="text-red-500 text-sm mt-1">{productNameError}</p>
+          )}
         </div>
+
         <div className="mb-4">
           <label htmlFor="productCategory" className="block text-gray-700">
             Product Category
@@ -60,6 +96,7 @@ const CreateProduct = () => {
             <option value="clothing">Clothing</option>
           </select>
         </div>
+
         <div className="mb-4">
           <label htmlFor="image" className="block text-gray-700">
             Image of Product
@@ -74,6 +111,7 @@ const CreateProduct = () => {
             {image ? <span>{image.name}</span> : <span>No file chosen</span>}
           </div>
         </div>
+
         <fieldset className="mb-4">
           <legend className="block text-gray-700">Product Freshness</legend>
           <div className="flex items-center mb-2">
@@ -119,6 +157,7 @@ const CreateProduct = () => {
             </label>
           </div>
         </fieldset>
+
         <div className="mb-4">
           <label
             htmlFor="additionalDescription"
@@ -133,6 +172,7 @@ const CreateProduct = () => {
             onChange={(e) => setAdditionalDescription(e.target.value)}
           />
         </div>
+
         <div className="mb-4">
           <label htmlFor="productPrice" className="block text-gray-700">
             Product Price
@@ -146,11 +186,20 @@ const CreateProduct = () => {
             required
           />
         </div>
+
         <button
           type="submit"
           className="w-full bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600"
         >
           Submit
+        </button>
+
+        <button
+          type="button"
+          onClick={handleRandomNumber} // Pastikan nama fungsi tidak typo
+          className="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+        >
+          Generate Random Number
         </button>
       </form>
     </div>
