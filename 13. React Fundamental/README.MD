@@ -1,10 +1,26 @@
 # React_Ajeng-Nursyifa
 
-Pengumpulan Tugas Alterra REACTJS FRONT END
+# React Fundamental
 
-3 poin penting
+React adalah sebuah perpustakaan JavaScript yang dikembangkan oleh Facebook untuk membangun antarmuka pengguna (user interface) yang dinamis dan efisien. Dengan React, Anda dapat membangun komponen-komponen UI yang dapat digunakan kembali (reusable) dan mudah dikelola.
 
-1. Front-end adalah bagian dari sebuah aplikasi atau website yang langsung berinteraksi dengan pengguna.
-2. Front-end sebagai penghubung antara ui ux dan back end
-3. Front end biasanya bertugas untuk membuat tampilan web atau antarmuka yang nyaman dan interaktif
-4. Front-end sering mengguakan html,css dan java script
+## Konsep Dasar dalam React
+
+- **Komponen**: Unit terkecil dalam React yang merepresentasikan bagian dari UI.
+- **Props**: Data yang diteruskan dari komponen induk ke komponen anak.
+- **State**: Data internal dari suatu komponen yang dapat berubah seiring waktu.
+- **JSX**: Sintaks yang mirip dengan HTML untuk mendefinisikan struktur UI.
+- **Virtual DOM**: Representasi virtual dari DOM yang sebenarnya, digunakan untuk mempercepat pembaruan UI.
+
+## Siklus Hidup Komponen (Component Lifecycle)
+
+Komponen React memiliki siklus hidup yang mencakup tahap pembuatan, pembaruan, dan penghapusan.
+
+## Konsep Lanjutan
+
+- **Higher-Order Components (HOC)**: Fungsi yang mengambil komponen sebagai argumen dan mengembalikan komponen baru dengan fungsionalitas tambahan.
+- **Render Props**: Teknik untuk berbagi logika antara komponen dengan meneruskan fungsi sebagai props.
+
+---
+
+React mempermudah pembuatan dan pemeliharaan antarmuka pengguna yang kompleks dengan memecahnya menjadi komponen-komponen yang lebih kecil dan dapat digunakan kembali.
