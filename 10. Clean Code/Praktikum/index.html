@@ -4,108 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product List</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      let productCount = 0; // Initialize a counter for product numbers
 
-      function addProduct() {
-        const productName = document.getElementById("productName").value;
-        const productCategory =
-          document.getElementById("productCategory").value;
-        const productFreshness =
-          document.getElementById("productFreshness").value;
-        const additionalDescription = document.getElementById(
-          "additionalDescription"
-        ).value;
-        const productPrice = document.getElementById("productPrice").value;
+    <!-- Menyertakan TailwindCSS untuk styling halaman -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
-        // Validate input fields
-        if (
-          !productName ||
-          !productCategory ||
-          !productFreshness ||
-          !additionalDescription ||
-          !productPrice
-        ) {
-          alert("Please fill all fields.");
-          return;
-        }
-
-        const table = document
-          .getElementById("productTable")
-          .getElementsByTagName("tbody")[0];
-        const newRow = table.insertRow();
-
-        // Increment the product count for each new product
-        productCount++;
-
-        // Populate the new row with product data
-        newRow.innerHTML = `
-                <td>\${productCount}</td> <!-- Display the product count -->
-                <td>\${productName}</td>
-                <td>\${productCategory}</td>
-                <td>Default Image</td>
-                <td>\${productFreshness}</td>
-                <td>\${additionalDescription}</td>
-                <td>\${productPrice}</td>
-            `;
-
-        // Reset the form fields
-        document.getElementById("productForm").reset();
-      }
-
-      function searchProduct() {
-        const input = document.getElementById("searchInput");
-        const filter = input.value.toUpperCase();
-        const table = document.getElementById("productTable");
-        const rows = table.getElementsByTagName("tr");
-
-        // Loop through table rows and hide/show based on search input
-        for (let i = 1; i < rows.length; i++) {
-          const productNameCell = rows[i].getElementsByTagName("td")[1];
-          if (productNameCell) {
-            const txtValue =
-              productNameCell.textContent || productNameCell.innerText;
-            rows[i].style.display = txtValue.toUpperCase().includes(filter)
-              ? ""
-              : "none";
-          }
-        }
-      }
-
-      function deleteProduct() {
-        const table = document.getElementById("productTable");
-        const rows = table.getElementsByTagName("tr");
-
-        // Check if there are products to delete
-        if (rows.length > 1) {
-          table.deleteRow(1); // Deletes the first product (second row in the table)
-          productCount--; // Decrement the product count after deletion
-          updateProductNumbers(); // Update product numbers after deletion
-        } else {
-          alert("No product to delete!");
-        }
-      }
-
-      // Function to update product numbers after deletion
-      function updateProductNumbers() {
-        const table = document.getElementById("productTable");
-        const rows = table.getElementsByTagName("tr");
-
-        for (let i = 1; i < rows.length; i++) {
-          rows[i].cells[0].innerText = i; // Update the product number in the first cell
-        }
-      }
-    </script>
+    <!-- Menghubungkan ke file JavaScript eksternal untuk fungsi logika -->
+    <script src="script.js"></script>
   </head>
 
   <body class="bg-gray-100 p-8">
-    <h2 class="text-2xl font-bold mb-6 text-center">List Product</h2>
+    <!-- Judul halaman -->
+    <h2 class="text-2xl font-bold mb-6 text-center">Product List</h2>
 
+    <!-- Form input untuk menambahkan produk baru -->
     <form
       id="productForm"
       class="mb-6 bg-white p-6 rounded shadow-md max-w-lg mx-auto"
     >
+      <!-- Input Nama Produk -->
       <div class="mb-4">
         <label for="productName" class="block text-gray-700"
           >Product Name:</label
@@ -119,6 +38,7 @@
         />
       </div>
 
+      <!-- Input Kategori Produk -->
       <div class="mb-4">
         <label for="productCategory" class="block text-gray-700"
           >Product Category:</label
@@ -132,6 +52,7 @@
         />
       </div>
 
+      <!-- Input Kondisi Produk -->
       <div class="mb-4">
         <label for="productFreshness" class="block text-gray-700"
           >Product Freshness:</label
@@ -145,19 +66,7 @@
         />
       </div>
 
-      <div class="mb-4">
-        <label for="additionalDescription" class="block text-gray-700"
-          >Additional Description:</label
-        >
-        <input
-          type="text"
-          id="additionalDescription"
-          placeholder="Enter Additional Description"
-          required
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
-      </div>
-
+      <!-- Input Harga Produk -->
       <div class="mb-4">
         <label for="productPrice" class="block text-gray-700"
           >Product Price:</label
@@ -171,6 +80,7 @@
         />
       </div>
 
+      <!-- Tombol untuk menambahkan produk ke daftar -->
       <button
         type="button"
         onclick="addProduct()"
@@ -180,46 +90,48 @@
       </button>
     </form>
 
-    <div class="max-w-lg mx-auto flex mb-6 space-x-2">
+    <!-- Pencarian dan penghapusan produk -->
+    <div class="flex mb-6 space-x-2">
+      <!-- Input pencarian produk -->
       <input
         type="text"
         id="searchInput"
         placeholder="Search by Product Name"
         class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
       />
+      <!-- Tombol pencarian produk -->
       <button
         onclick="searchProduct()"
         class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
       >
         Search
       </button>
+
+      <!-- Tombol untuk menghapus produk -->
       <button
         onclick="deleteProduct()"
         class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
       >
-        Deletion
+        Delete
       </button>
     </div>
 
+    <!-- Tabel untuk menampilkan daftar produk -->
     <div class="overflow-x-auto">
       <table
         id="productTable"
         class="min-w-full bg-white rounded shadow-md max-w-5xl mx-auto"
       >
-        <thead class="bg-gray-200">
-          <tr>
+        <thead>
+          <tr class="bg-gray-200">
             <th class="text-left px-4 py-2">No</th>
             <th class="text-left px-4 py-2">Product Name</th>
             <th class="text-left px-4 py-2">Product Category</th>
-            <th class="text-left px-4 py-2">Image of Product</th>
             <th class="text-left px-4 py-2">Product Freshness</th>
-            <th class="text-left px-4 py-2">Additional Description</th>
             <th class="text-left px-4 py-2">Product Price</th>
           </tr>
         </thead>
-        <tbody>
-          <tr></tr>
-        </tbody>
+        <tbody id="productTableBody"></tbody>
       </table>
     </div>
   </body>

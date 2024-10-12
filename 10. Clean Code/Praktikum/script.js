@@ -1,78 +1,36 @@
-var productId = 0;
+// Inisialisasi ID produk dengan nilai awal 1
+var productId = 1;
 
+// Fungsi untuk menambah produk ke dalam tabel
 function addProduct() {
-  var productName = document.getElementById("productName").value;
-  var productCategory = document.getElementById("productCategory").value;
-  var productFreshness = document.getElementById("productFreshness").value;
-  var additionalDescription = document.getElementById(
-    "additionalDescription"
-  ).value;
-  var productPrice = document.getElementById("productPrice").value;
+  // Mengambil nilai dari input form berdasarkan ID elemen
+  const productName = document.getElementById("productName").value;
+  const productCategory = document.getElementById("productCategory").value;
+  const productFreshness = document.getElementById("productFreshness").value;
+  const productPrice = document.getElementById("productPrice").value;
 
-  if (
-    !productName ||
-    !productCategory ||
-    !productFreshness ||
-    !additionalDescription ||
-    !productPrice
-  ) {
+  // Validasi: Cek apakah semua field input sudah diisi
+  if (!productName || !productCategory || !productFreshness || !productPrice) {
+    // Tampilkan alert jika ada field yang kosong
     alert("Please fill all fields.");
-    return;
+    return; // Hentikan eksekusi jika ada field yang kosong
   }
 
-  var table = document
-    .getElementById("productTable")
-    .getElementsByTagName("tbody")[0];
+  // Ambil elemen tbody dari tabel produk berdasarkan ID
+  const tableBody = document.getElementById("productTableBody");
 
-  var newRow = table.insertRow();
+  // Tambahkan baris baru ke tabel
+  const newRow = tableBody.insertRow();
 
-  var cell1 = newRow.insertCell(0);
-  var cell2 = newRow.insertCell(1);
-  var cell3 = newRow.insertCell(2);
-  var cell4 = newRow.insertCell(3);
-  var cell5 = newRow.insertCell(4);
-  var cell6 = newRow.insertCell(5);
-  var cell7 = newRow.insertCell(6);
+  // Setel isi baris baru dengan data yang dimasukkan oleh pengguna
+  newRow.innerHTML = `
+    <td>${productId++}</td> <!-- Tambahkan ID produk yang unik, lalu increment ID -->
+    <td>${productName}</td> <!-- Tampilkan nama produk -->
+    <td>${productCategory}</td> <!-- Tampilkan kategori produk -->
+    <td>${productFreshness}</td> <!-- Tampilkan kondisi produk (freshness) -->
+    <td>${productPrice}</td> <!-- Tampilkan harga produk -->
+  `;
 
-  cell1.innerHTML = productId++;
-  cell2.innerHTML = productName;
-  cell3.innerHTML = productCategory;
-  cell4.innerHTML = "Default Image";
-  cell5.innerHTML = productFreshness;
-  cell6.innerHTML = additionalDescription;
-  cell7.innerHTML = productPrice;
-
+  // Reset form setelah produk berhasil ditambahkan
   document.getElementById("productForm").reset();
-}
-
-function searchProduct() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("productTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 1; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-
-// Delete product (for simplicity, this deletes the first product)
-function deleteProduct() {
-  var table, tr;
-  table = document.getElementById("productTable");
-  tr = table.getElementsByTagName("tr");
-  if (tr.length > 1) {
-    table.deleteRow(1); // Deletes the first product (second row in the table)
-  } else {
-    alert("No product to delete!");
-  }
 }
