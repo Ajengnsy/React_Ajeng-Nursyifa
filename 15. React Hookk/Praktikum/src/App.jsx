@@ -1,11 +1,6 @@
 // src/App.jsx
 import React, { useState } from "react";
 import CreateProduct from "./CreateProduct";
-import article from "./artikel/article"; // Adjust the path as necessary
-
-console.log(article.title.id); // Outputs: "Buat Akun"
-console.log(article.description.en); // Outputs: "Below is an example form built entirely with Bootstrap’s form controls..."
-
 const App = () => {
   const [activeButton, setActiveButton] = useState("Home");
 

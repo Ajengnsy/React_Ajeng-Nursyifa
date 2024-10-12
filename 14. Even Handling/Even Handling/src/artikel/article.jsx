@@ -9,4 +9,4 @@ const article = {
   },
 };
 
-export default article; // Exporting the article object for use in other files
+export default article;
