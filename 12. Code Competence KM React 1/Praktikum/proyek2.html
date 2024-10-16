@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-welcome {
+        background-image: url("https://plus.unsplash.com/premium_photo-1726619960461-e7245b44045f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D%3D/1920x1080");
+        background-size: cover;
+        background-position: center;
+      }
+      .flex-col-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .text-center-top {
+        text-align: center;
+        margin-top: -20%;
+        color: white;
+      }
+      .header-bg {
+        background-color: white; /* Set header background to white */
+      }
+      .join-button {
+        background-color: #2b4251;
+        color: rgb(251, 239, 239);
+      }
+      .menu-item {
+        color: #4a5568; /* Tailwind gray-700 */
+        padding: 10px;
+        transition: color 0.3s;
+      }
+      .menu-item:hover {
+        color: #6f42e1; /* Tailwind blue-500 */
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <header class="header-bg p-1 shadow-md">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="logo.png" alt="Logo" class="h-10 mr-2" />
+          <!-- Replace with your logo URL -->
+          <span class="text-1xl font-bold">My Website</span>
+        </div>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a href="#" class="menu-item">Home</a></li>
+            <li><a href="#" class="menu-item">Products</a></li>
+            <li><a href="#" class="menu-item">About</a></li>
+            <li><a href="#" class="menu-item">Contacts</a></li>
+          </ul>
+        </nav>
+        <div>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-500 flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12v4m0 0v4m0-4h-8m8 0H8m8-4V8m0 4H8m8-4V4m0 4H8m8-4V4m0 4H8"
+              />
+            </svg>
+            Login
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="flex-col-center bg-welcome">
+      <h1 class="text-5xl font-bold mb-4 text-center-top">
+        WELCOME TO OUR WEBSITE
+      </h1>
+      <p class="mb-6">Lorem ipsum dolor sit amet, consectetur.</p>
+      <a href="#" class="join-button py-2 px-4 rounded hover:bg-orange-600"
+        >JOIN NOW</a
+      >
+    </section>
+
+    <!-- Contact Us Section -->
+    <div class="container mx-auto my-10 p-5">
+      <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+      <p class="mb-4">
+        Need to get in touch with us? Either fill out the form with your inquiry
+        or find the department email you'd like to contact below.
+      </p>
+      <form id="contactForm" class="space-y-4">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700"
+            >Username</label
+          >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700"
+            >Message</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="join-button py-2 px-4 rounded hover:bg-orange-600"
+        >
+          Submit
+        </button>
+      </form>
+
+      <div
+        id="submittedData"
+        class="mt-6 p-4 border border-gray-300 rounded-md hidden"
+      >
+        <h3 class="font-bold">Submitted Data:</h3>
+        <p id="displayUsername"></p>
+        <p id="displayEmail"></p>
+        <p id="displayMessage"></p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Get form values
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          // Display the submitted data
+          document.getElementById(
+            "displayUsername"
+          ).innerText = `Username: ${username}`;
+          document.getElementById("displayEmail").innerText = `Email: ${email}`;
+          document.getElementById(
+            "displayMessage"
+          ).innerText = `Message: ${message}`;
+
+          // Show the submitted data section
+          document.getElementById("submittedData").classList.remove("hidden");
+
+          // Reset the form
+          document.getElementById("contactForm").reset();
+        });
+    </script>
+  </body>
+</html>
