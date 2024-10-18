@@ -21,8 +21,8 @@ const CreateProduct = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/; // Alphanumeric and spaces, 6-50 characters
-    const priceRegex = /^\d+(\.\d{1,2})?$/; // Positive numbers with optional decimal
+    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/;
+    const priceRegex = /^\d+(\.\d{1,2})?$/;
 
     if (!nameRegex.test(productName)) {
       newErrors.productName =

@@ -45,8 +45,8 @@ const ListProduct = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/; // Alphanumeric and spaces, 6-50 characters
-    const priceRegex = /^\d+(\.\d{1,2})?$/; // Positive numbers with optional decimal
+    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/;
+    const priceRegex = /^\d+(\.\d{1,2})?$/;
 
     if (!nameRegex.test(productName)) {
       newErrors.productName =
@@ -70,33 +70,33 @@ const ListProduct = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validateForm()) {
-      return; // Stop submission if validation fails
+      return;
     }
 
     const newProduct = {
-      id: productToEdit ? productToEdit.id : Date.now().toString(), // Use existing ID for editing
+      id: productToEdit ? productToEdit.id : Date.now().toString(),
       productName,
       productCategory,
       productFreshness,
       productPrice,
       image: fileName,
-      additionalDescription: "", // Add additional description if needed
+      additionalDescription: "",
     };
 
     if (productToEdit) {
-      editProduct(newProduct); // Call the edit function from the store
+      editProduct(newProduct);
     } else {
-      addProduct(newProduct); // Call the add function from the store
+      addProduct(newProduct);
     }
 
     resetForm();
-    handleCloseForm(); // Close the form after submission
+    handleCloseForm();
   };
 
   const filteredProducts = products.filter((product) =>

@@ -18,8 +18,8 @@ const CreateProduct = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/; // Alphanumeric and spaces, 6-50 characters
-    const priceRegex = /^\d+(\.\d{1,2})?$/; // Positive numbers with optional decimal
+    const nameRegex = /^[a-zA-Z0-9\s]{6,50}$/;
+    const priceRegex = /^\d+(\.\d{1,2})?$/;
 
     if (!nameRegex.test(productName)) {
       newErrors.productName =
@@ -43,26 +43,26 @@ const CreateProduct = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validateForm()) {
-      return; // Stop submission if validation fails
+      return;
     }
 
     const newProduct = {
-      id: Date.now().toString(), // Use timestamp as a unique ID
+      id: Date.now().toString(),
       productName,
       productCategory,
       productFreshness,
       productPrice,
       image: fileName,
-      additionalDescription: "", // Add additional description if needed
+      additionalDescription: "",
     };
 
-    addProduct(newProduct); // Call the function from the store
+    addProduct(newProduct);
     resetForm();
   };
 
