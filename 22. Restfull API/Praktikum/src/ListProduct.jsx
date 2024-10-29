@@ -28,8 +28,7 @@ const ProductList = () => {
         product
       );
       setMessage("Product updated successfully!");
-      setEditProduct(null); // Clear the edit form
-      // Refresh the product list
+      setEditProduct(null);
       const updatedProducts = products.map((p) =>
         p.id === product.id ? response.data : p
       );
