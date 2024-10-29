@@ -30,7 +30,6 @@ const CreateProduct = () => {
       setMessage("Product created successfully!");
       showModal();
 
-      // Reset form fields
       setProductName("");
       setProductCategory("");
       setProductFreshness("");
