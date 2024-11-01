@@ -1,56 +1,22 @@
-# React_Ajeng-Nursyifa
+# Autentikasi dan Otorisasi di React
 
-# 3 poin penting
+Autentikasi dan Otorisasi adalah dua konsep penting yang sering digunakan dalam aplikasi React untuk mengamankan akses ke sumber daya atau data sensitif.
 
-1. Front-end adalah bagian dari sebuah aplikasi atau website yang langsung berinteraksi dengan pengguna.
-2. Front-end sebagai penghubung antara ui ux dan back end
-3. Front end biasanya bertugas untuk membuat tampilan web atau antarmuka yang nyaman dan interaktif
-4. Front-end sering mengguakan html,css dan java script
+## Authentication
 
-# RESTful API
+Autentikasi adalah proses untuk memverifikasi identitas pengguna. Contohnya, saat pengguna mencoba masuk ke aplikasi dengan username dan password, sistem akan memeriksa apakah informasi yang diberikan cocok dengan yang ada di database.
 
-RESTful API (Representational State Transfer) adalah gaya arsitektur yang digunakan untuk membangun layanan web, memungkinkan komunikasi antar sistem melalui protokol HTTP. RESTful API populer karena kesederhanaan dan fleksibilitasnya, memungkinkan berbagai aplikasi berinteraksi secara efisien dan terstruktur.
+Dalam React, autentikasi biasanya diterapkan dengan mengirimkan data login ke server. Jika kredensial tersebut valid, server akan mengembalikan token (seperti JSON Web Token atau JWT), yang disimpan di browser, misalnya di `localStorage` atau `sessionStorage`. Token ini kemudian digunakan untuk otentikasi pengguna saat mengakses halaman atau API tertentu. Status login biasanya dikelola menggunakan state atau konteks global seperti `useContext`.
 
-## Prinsip Dasar RESTful API
+## Authorization
 
-1. **Stateless**  
-   Setiap permintaan dari klien ke server harus memuat semua informasi yang diperlukan tanpa bergantung pada permintaan sebelumnya. Server tidak menyimpan konteks antara permintaan.
+Otorisasi mengacu pada proses menentukan hak akses pengguna terhadap sumber daya atau fitur di aplikasi. Ini terjadi setelah autentikasi. Misalnya, meskipun seorang pengguna berhasil masuk, mereka mungkin hanya memiliki izin untuk melihat halaman tertentu berdasarkan peran mereka (misalnya, admin atau pengguna biasa).
 
-2. **Client-Server**  
-   Memisahkan tanggung jawab antara klien (pengguna aplikasi) dan server (penyedia data), memungkinkan keduanya berkembang secara independen.
+Di aplikasi React, otorisasi dapat dikelola dengan memeriksa peran pengguna sebelum menampilkan komponen atau menggunakan rute khusus seperti `PrivateRoute` dari React Router. Ini memastikan bahwa hanya pengguna yang berwenang yang dapat mengakses halaman tertentu.
 
-3. **Uniform Interface**  
-   Menggunakan aturan yang konsisten, seperti metode HTTP berikut:
+## Ringkasan
 
-   - **GET**: Mengambil data dari server.
-   - **POST**: Menambahkan data baru ke server.
-   - **PUT**: Memperbarui data yang sudah ada di server.
-   - **DELETE**: Menghapus data di server.
+- **Autentikasi**: Memastikan **siapa** pengguna itu.
+- **Otorisasi**: Menentukan **apa** yang diizinkan pengguna untuk lakukan.
 
-4. **Cacheable**  
-   Respons dapat di-cache untuk meningkatkan kinerja dan mengurangi beban server.
-
-5. **Layered System**  
-   RESTful API dapat diakses melalui berbagai lapisan (seperti load balancer atau proxy server) tanpa memengaruhi klien.
-
-## Struktur URL dalam RESTful API
-
-RESTful API menggunakan struktur URL hierarkis untuk menunjukkan entitas data, sehingga mudah dipahami dan diakses. Contoh:
-
-- `GET /users`: Mengambil daftar semua pengguna.
-- `GET /users/1`: Mengambil data pengguna dengan ID 1.
-- `POST /users`: Menambahkan pengguna baru.
-- `PUT /users/1`: Memperbarui data pengguna dengan ID 1.
-- `DELETE /users/1`: Menghapus pengguna dengan ID 1.
-
-## Format Data yang Digunakan
-
-RESTful API umumnya menggunakan format **JSON** (JavaScript Object Notation) karena ringan dan mudah dibaca. Meskipun begitu, **XML** juga didukung di beberapa layanan.
-
-## Keunggulan RESTful API
-
-- **Kemudahan Pengembangan**: RESTful API sederhana dan konsisten, sehingga mudah dipahami dan dikembangkan.
-- **Fleksibilitas Akses**: RESTful API dapat diakses dari berbagai perangkat dan platform, seperti browser, aplikasi mobile, atau perangkat IoT.
-- **Scalability**: RESTful API memungkinkan skalabilitas yang tinggi karena arsitekturnya yang tidak bergantung pada status (stateless).
-
-RESTful API adalah pendekatan modular dan sederhana yang cocok untuk aplikasi yang membutuhkan komunikasi data antara server dan klien.
+Kedua proses ini bekerja bersama untuk mengamankan aplikasi dan memberikan pengalaman yang sesuai berdasarkan identitas dan hak akses pengguna.
